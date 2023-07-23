@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LocatarioController;
 use App\Http\Controllers\FiadorController;
+use App\Http\Controllers\ProprietarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,14 @@ Route::get('/', function () {
 
 Route::resource('locatarios', LocatarioController::class);
 Route::resource('fiadores', FiadorController::class);
+Route::resource('proprietarios', ProprietarioController::class);
 
 
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

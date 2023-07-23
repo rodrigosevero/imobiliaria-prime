@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 Use Laracasts\Flash\Flash;
 use App\Http\Requests\LocatarioRequest;
+use App\Http\Requests\ProprietarioController;
 use App\Models\Locatario;
 use Illuminate\Http\Request;
 
 class LocatarioController extends Controller
 {
     // ...
+
+    public function index()
+    {
+        $locatarios = Locatario::all();
+        return view('locatarios.index', compact('locatarios'));
+    }
 
     public function create()
     {

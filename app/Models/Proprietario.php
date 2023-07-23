@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Fiador extends Model
+class Proprietario extends Model
 {
     use HasFactory, SoftDeletes;
 
     // Definindo o nome da tabela (opcional se seguir a convenção de nome)
-    protected $table = 'fiador';
-
+    protected $table = 'proprietarios';
 
     // Definindo os campos que podem ser preenchidos em massa (mass assignment)
     protected $fillable = [
@@ -24,10 +23,6 @@ class Fiador extends Model
         'telefone_fixo',
         'telefone_celular',
         'profissao',
-        'nome_conjuge', 
-        'cpf_conjuge',  
-        'rg_conjuge',
-        'profissao_conjuge',
         'cep',
         'logradouro',
         'numero',
@@ -36,10 +31,6 @@ class Fiador extends Model
         'estado',
         'cnh_frente',
         'cnh_verso',
-        'certidao_civil',
-        'holerite_1',
-        'holerite_2',
-        'holerite_3',
         'comprovante_endereco',
     ];
 
@@ -57,9 +48,9 @@ class Fiador extends Model
     }
 
     // Definindo relacionamentos (opcional)
-    // Por exemplo, se houver relacionamento com a tabela de cônjuges:
-    // public function conjugue()
+    // Por exemplo, se houver relacionamento com a tabela de imóveis:
+    // public function imoveis()
     // {
-    //     return $this->hasOne(Conjuge::class);
+    //     return $this->hasMany(Imovel::class);
     // }
 }

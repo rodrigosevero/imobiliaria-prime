@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class FiadorController extends Controller
 {
+    public function index()
+    {
+
+        $fiadores = Fiador::all();
+        return view('fiadores.index', compact('fiadores'));
+    }
+
     public function create()
     {
         return view('fiadores.create');
@@ -15,7 +22,7 @@ class FiadorController extends Controller
 
     public function store(FiadorRequest $request)
     {
-        
+
 
         // Salvar os dados do formulário no banco de dados
         $locatario = Fiador::create([
@@ -37,20 +44,20 @@ class FiadorController extends Controller
             'cidade' => $request->input('cidade'),
             'estado' => $request->input('estado'),
         ]);
-        
+
         // Fazendo o upload dos arquivos e salvando os nomes no banco de dados
         if ($request->hasFile('cnh_frente')) {
-            $cnhFrentePath = $request->file('cnh_frente')->store('documentos');            
+            $cnhFrentePath = $request->file('cnh_frente')->store('documentos');
             Fiador::where('id', $locatario->id)->update(['cnh_frente' => $cnhFrentePath]);
         }
 
         if ($request->hasFile('cnh_verso')) {
-            $cnhVersoPath = $request->file('cnh_verso')->store('documentos');            
+            $cnhVersoPath = $request->file('cnh_verso')->store('documentos');
             Fiador::where('id', $locatario->id)->update(['cnh_verso' => $cnhVersoPath]);
         }
 
         if ($request->hasFile('certidao_civil')) {
-            $certidaoCivilPath = $request->file('certidao_civil')->store('documentos');            
+            $certidaoCivilPath = $request->file('certidao_civil')->store('documentos');
             Fiador::where('id', $locatario->id)->update(['certidao_civil' => $certidaoCivilPath]);
         }
 
@@ -60,21 +67,21 @@ class FiadorController extends Controller
         }
 
         if ($request->hasFile('holerite_2')) {
-            $holerite2Path = $request->file('holerite_2')->store('documentos');            
+            $holerite2Path = $request->file('holerite_2')->store('documentos');
             Fiador::where('id', $locatario->id)->update(['holerite_2' => $holerite2Path]);
         }
 
         if ($request->hasFile('holerite_3')) {
-            $holerite3Path = $request->file('holerite_3')->store('documentos');            
+            $holerite3Path = $request->file('holerite_3')->store('documentos');
             Fiador::where('id', $locatario->id)->update(['holerite_3' => $holerite3Path]);
         }
 
-        if ($request->hasFile('comprovante_endereco')) {            
-            $comprovanteEnderecoPath = $request->file('comprovante_endereco')->store('documentos');            
-            Fiador::where('id', $locatario->id)->update(['comprovante_endereco' => $comprovanteEnderecoPath]);        
+        if ($request->hasFile('comprovante_endereco')) {
+            $comprovanteEnderecoPath = $request->file('comprovante_endereco')->store('documentos');
+            Fiador::where('id', $locatario->id)->update(['comprovante_endereco' => $comprovanteEnderecoPath]);
         }
 
-        
+
         // Redirecionar para alguma página após o cadastro (opcional)
         return redirect()->back()->with('success', 'Locatário cadastrado com sucesso!');
     }
