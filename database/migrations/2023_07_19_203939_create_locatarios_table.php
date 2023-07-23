@@ -1,5 +1,7 @@
 <?php
 
+use Ramsey\Uuid\Uuid;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,23 +12,44 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('locatarios', function (Blueprint $table) {
-        $table->uuid('id')->primary(); // Usando UUID em vez de um número inteiro para o ID
-        $table->string('nome_completo');
-        $table->string('cpf')->unique();
-        $table->string('nacionalidade');
-        $table->string('email')->nullable();
-        $table->string('telefone_fixo')->nullable();
-        $table->string('telefone_celular')->nullable();
-        $table->string('profissao')->nullable();
-        $table->string('nome_conjuge')->nullable(); // Novo campo para o nome do cônjuge
-        $table->string('cpf_conjuge')->nullable();  // Novo campo para o CPF do cônjuge
-        $table->string('nacionalidade_conjuge')->nullable(); // Novo campo para a nacionalidade do cônjuge
-        $table->timestamps();
-        $table->softDeletes(); // Adicionando a coluna para Soft Deletes
-    });
-}
+    {
+        Schema::create('locatarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome_completo');
+            $table->string('cpf');
+            $table->string('nacionalidade');
+            $table->string('email')->nullable();
+            $table->string('telefone_fixo')->nullable();
+            $table->string('telefone_celular')->nullable();
+            $table->string('profissao')->nullable();
+
+            $table->string('nome_conjuge')->nullable(); // Novo campo para o nome do cônjuge
+            $table->string('cpf_conjuge')->nullable();  // Novo campo para o CPF do cônjuge            
+            $table->string('rg_conjuge')->nullable();  // Novo campo para o CPF do cônjuge            
+            $table->string('profissao_conjuge')->nullable();
+
+            // Campos para endereço
+            $table->string('cep')->nullable();
+            $table->string('logradouro')->nullable();
+            $table->string('numero')->nullable();
+            $table->string('complemento')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('estado')->nullable();
+            $table->string('comprovante_endereco')->nullable();
+
+            // Campos para documentos            
+            $table->string('cnh_frente')->nullable();
+            $table->string('cnh_verso')->nullable();
+            $table->string('certidao_civil')->nullable();
+            $table->string('holerite_1')->nullable();
+            $table->string('holerite_2')->nullable();
+            $table->string('holerite_3')->nullable();
+            // $table->string('matricula_imovel')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes(); // Adicionando a coluna para Soft Deletes
+        });
+    }
 
 
     /**

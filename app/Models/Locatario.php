@@ -13,10 +13,6 @@ class Locatario extends Model
     // Definindo o nome da tabela (opcional se seguir a convenção de nome)
     protected $table = 'locatarios';
 
-    // Definindo UUID como ID
-    public $incrementing = false;
-    protected $keyType = 'string';
-    protected $primaryKey = 'id';
 
     // Definindo os campos que podem ser preenchidos em massa (mass assignment)
     protected $fillable = [
@@ -28,9 +24,23 @@ class Locatario extends Model
         'telefone_fixo',
         'telefone_celular',
         'profissao',
-        'nome_conjuge', // Novo campo para o nome do cônjuge
-        'cpf_conjuge',  // Novo campo para o CPF do cônjuge
-        'nacionalidade_conjuge', // Novo campo para a nacionalidade do cônjuge
+        'nome_conjuge', 
+        'cpf_conjuge',  
+        'rg_conjuge',
+        'profissao_conjuge',
+        'cep',
+        'logradouro',
+        'numero',
+        'complemento',
+        'cidade',
+        'estado',
+        'cnh_frente',
+        'cnh_verso',
+        'certidao_civil',
+        'holerite_1',
+        'holerite_2',
+        'holerite_3',
+        'comprovante_endereco',
     ];
 
     // Definindo os campos protegidos contra atribuição em massa
