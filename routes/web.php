@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LocatarioController;
+use App\Http\Controllers\FiadorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,8 @@ Route::get('/', function () {
 });
 
 Route::resource('locatarios', LocatarioController::class);
+Route::resource('fiadores', FiadorController::class);
+
 
 
 Auth::routes();
