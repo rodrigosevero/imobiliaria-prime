@@ -334,6 +334,7 @@
 
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary">Cadastrar Locatário</button>
+                                <a href="{{ url('/') }}" class="btn btn-secondary">Voltar</a>
                             </div>
                         </form>
                     </div>

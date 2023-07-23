@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Cadastro - Fiador</title>
+    <title>Formulário de Cadastro - Proprietário</title>
     <!-- CSS do Bootstrap 5.3.0 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
@@ -19,8 +19,9 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
+                
                 <div class="card">
-                    <div class="card-header">Formulário de Cadastro de Fiador</div>
+                    <div class="card-header">Formulário de Cadastro de Proprietário</div>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -29,10 +30,10 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('fiadores.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('proprietarios.store') }}" enctype="multipart/form-data">
                             @csrf
 
-                            <!-- Campos para dados do fiador -->
+                            <!-- Campos para dados do proprietário -->
                             <div class="mb-3">
                                 <label for="nome_completo" class="form-label">Nome Completo</label>
                                 <input type="text" class="form-control @error('nome_completo') is-invalid @enderror"
@@ -103,8 +104,8 @@
                                 </div>
                             </div>
 
-                            <!-- Campos para documentos do fiador -->
-                            <h4 class="mt-4">Documentos do Fiador</h4>
+                            <!-- Campos para documentos do proprietário -->
+                            <h4 class="mt-4">Documentos do Proprietário</h4>
 
                             <div class="mb-3">
                                 <label for="comprovante_endereco" class="form-label">Comprovante de Endereço</label>
@@ -117,36 +118,25 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="cnh_frente" class="form-label">Frente da CNH</label>
-                                <input type="file" class="form-control @error('cnh_frente') is-invalid @enderror"
-                                    id="cnh_frente" name="cnh_frente">
-                                @error('cnh_frente')
+                                <label for="rg_frente" class="form-label">Frente do RG</label>
+                                <input type="file" class="form-control @error('rg_frente') is-invalid @enderror"
+                                    id="rg_frente" name="rg_frente">
+                                @error('rg_frente')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="cnh_verso" class="form-label">Verso da CNH</label>
-                                <input type="file" class="form-control @error('cnh_verso') is-invalid @enderror"
-                                    id="cnh_verso" name="cnh_verso">
-                                @error('cnh_verso')
+                                <label for="rg_verso" class="form-label">Verso do RG</label>
+                                <input type="file" class="form-control @error('rg_verso') is-invalid @enderror"
+                                    id="rg_verso" name="rg_verso">
+                                @error('rg_verso')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <div class="mb-3">
-                                <label for="certidao_civil" class="form-label">Certidão Civil (nascimento ou
-                                    casamento)</label>
-                                <input type="file"
-                                    class="form-control @error('certidao_civil') is-invalid @enderror"
-                                    id="certidao_civil" name="certidao_civil">
-                                @error('certidao_civil')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <!-- Campos para holerite do fiador -->
-                            <h4 class="mt-4">Holerite ou comprovante de renda do Fiador</h4>
+                            <!-- Campos para holerite do proprietário -->
+                            <h4 class="mt-4">Holerite ou comprovante de renda do Proprietário</h4>
 
                             <div class="mb-3">
                                 <label for="holerite_1" class="form-label">Holerite 1</label>
@@ -176,7 +166,7 @@
                             </div>
 
                             <div class="mt-4">
-                                <button type="submit" class="btn btn-primary">Cadastrar Fiador</button>
+                                <button type="submit" class="btn btn-primary">Cadastrar Proprietário</button>
                                 <a href="{{ url('/') }}" class="btn btn-secondary">Voltar</a>
                             </div>
                         </form>

@@ -3,6 +3,8 @@
 use App\Http\Controllers\LocatarioController;
 use App\Http\Controllers\FiadorController;
 use App\Http\Controllers\ProprietarioController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,14 @@ Route::resource('locatarios', LocatarioController::class);
 Route::resource('fiadores', FiadorController::class);
 Route::resource('proprietarios', ProprietarioController::class);
 
+
+// Route::get('/proprietarios/create', 'ProprietarioController@create')->name('proprietarios.create');;;
+
+// // Rota pública para a view "create" do Locatário
+// Route::get('/locatarios/create', 'LocatarioController@create')->name('locatarios.create');;;
+
+// // Rota pública para a view "create" do Fiador
+// Route::get('/fiadores/create', 'FiadorController@create')->name('fiadores.create');;
 
 
 
